@@ -5,7 +5,7 @@
 				<h1 class="text-old-lace text-6xl font-bold mt-24">Contact Me</h1>
 			</div>
 			<div class="flex justify-center">
-				<form @submit.prevent="sendEmail" class="w-full w-6/12 mt-16">
+				<form ref="form" @submit.prevent="sendEmail" class="w-7/12 mt-16">
 					<div class="flex flex-wrap">
 						<div class="w-1/2 md:w-1/2 px-3">
 							<label class="block tracking-wide text-old-lace text-m font-bold mb-2" for="name">
@@ -16,7 +16,7 @@
 								id="name" v-model="name" type="text" placeholder="Enter your first name">
 						</div>
 						<div class="w-1/2 md:w-1/2 px-3">
-							<label class="block tracking-wide text-old-lace text-m font-bold mb-2" for="grid-last-name">
+							<label class="block tracking-wide text-old-lace text-m font-bold mb-2" for="email">
 								Email
 							</label>
 							<input
@@ -26,7 +26,7 @@
 					</div>
 					<div class="flex flex-wrap mt-2">
 						<div class="w-full px-3">
-							<label class="block tracking-wide text-old-lace text-m font-bold mb-2" for="grid-subject">
+							<label class="block tracking-wide text-old-lace text-m font-bold mb-2" for="subject">
 								Email Subject
 							</label>
 							<input
@@ -36,7 +36,7 @@
 					</div>
 					<div class="flex flex-wrap mt-2">
 						<div class="w-full px-3">
-							<label class="block tracking-wide text-old-lace text-m font-bold mb-2" for="grid-message">
+							<label class="block tracking-wide text-old-lace text-m font-bold mb-2" for="message">
 								Message
 							</label>
 							<input
@@ -55,10 +55,10 @@
 		</div>
 	</section>
 </template>
+
 <script>
 import emailjs from "emailjs-com";
 export default {
-	name: 'ContactUs',
 	data() {
 		return {
 			name: '',
@@ -68,9 +68,9 @@ export default {
 		}
 	},
 	methods: {
-		sendEmail(e) {
+		sendEmail() {
 			try {
-				emailjs.sendForm('service_y27qrgs', 'template_s7osrob', e.target, 'rM00hFKSHOA7F2t3H', {
+				emailjs.sendForm('service_y27qrgs', 'template_s7osrob', this.$refs.form, 'rM00hFKSHOA7F2t3H', {
 					name: this.name,
 					email: this.email,
 					subject: this.subject,
@@ -80,11 +80,10 @@ export default {
 			} catch (error) {
 				console.log({ error })
 			}
-			// Reset form field
 			this.name = ''
 			this.email = ''
-			this.message = ''
 			this.subject = ''
+			this.message = ''
 		},
 	}
 }
