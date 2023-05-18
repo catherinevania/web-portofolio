@@ -48,7 +48,4 @@ import ContactMe from './components/ContactMe.vue';
 	<AboutMe></AboutMe>
 	<MyProject></MyProject>
 	<ContactMe></ContactMe>
-	<!-- <HomeSection></HomeSection> -->
-
-	<!-- <RouterView /> -->
 </template>
