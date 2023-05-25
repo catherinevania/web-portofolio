@@ -44,9 +44,9 @@
 								id="message" v-model="message" type="text" placeholder="What do you want to discuss?">
 						</div>
 					</div>
-					<div class="flex justify-center mt-2 mb-24">
+					<div class="mt-8 mb-24 flex justify-center">
 						<button type="submit"
-							class="bg-old-lace hover:bg-emerald-600 hover:text-white text-green font-medium text-xl py-2 px-8 rounded-full shadow mt-4 w-full h-full flex justify-center text-center">
+							class="bg-old-lace hover:bg-emerald-600 hover:text-white text-green font-medium text-xl py-2 px-8 rounded-full shadow mt-4 flex justify-center items-center text-center w-full mx-auto">
 							Submit
 						</button>
 					</div>
@@ -69,17 +69,16 @@ export default {
 	},
 	methods: {
 		sendEmail() {
-			try {
-				emailjs.sendForm('service_y27qrgs', 'template_s7osrob', this.$refs.form, 'rM00hFKSHOA7F2t3H', {
-					name: this.name,
-					email: this.email,
-					subject: this.subject,
-					message: this.message
-				})
-				console.log(this.name);
-			} catch (error) {
-				console.log({ error })
-			}
+			emailjs.send('service_y27qrgs', 'template_s7osrob', {
+				'name': this.name,
+				'email': this.email,
+				'subject': this.subject,
+				'message': this.message
+			}, 'rM00hFKSHOA7F2t3H').then(function (response) {
+				console.log('SUCCESS!', response.status, response.text);
+			}, function (error) {
+				console.log('FAILED...', error);
+			});
 			this.name = ''
 			this.email = ''
 			this.subject = ''

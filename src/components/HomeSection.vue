@@ -12,11 +12,10 @@
 				</div>
 			</div>
 			<div class="mt-12 flex justify-center place-content-center">
-				<button
-					class="bg-green hover:bg-blue-700 text-old-lace font-medium flex items-center text-xl py-2 px-4 rounded-full shadow">
+				<a href="https://www.linkedin.com/in/catherine-vania-78508b1ba/"
+					class="bg-green text-old-lace hover:bg-emerald-600 hover:text-white font-medium flex items-center text-xl py-2 px-4 rounded-full shadow mt-4">
 					<img src="../../image/linkedin.svg" class="h-5 w-5 mr-2">
-					Let's Connect!
-				</button>
+					Let's connect!</a>
 			</div>
 		</div>
 	</section>
